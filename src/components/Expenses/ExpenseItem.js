@@ -1,11 +1,20 @@
+import React from 'react';
 import './ExpenseItem.css';
 import ExpenseDate from './ExpenseDate';
+import Card from '../UI/Card';
 
 function ExpenseItem(props) {
-   const expenseDate = new Date(2022, 10, 9);
-   const expenseTitle = 'Car Insurance';
-   const expenseAmount = 350;
+  
+ /*const[title, setTitle] = useState(props.title);*/
 
+   //let title = props.title;
+   /* const ClickHandler = () =>{
+       setTitle('Updated');
+      console.log(title);
+    }*/
+  // const expenseDate = new Date(2021, 2, 28);
+  // const expenseTitle = 'Car Insurance';
+  // const expenseAmount = 294.67;
     return (
         <div className='expense-item'>
         <ExpenseDate date ={props.date}/>
