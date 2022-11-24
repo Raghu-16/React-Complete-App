@@ -1,17 +1,29 @@
-import React from 'react';
+import React, {useState} from 'react';
+//import React from 'react';
 import './NewExpense.css';
 import  ExpenseForm from './ExpenseForm';
 
 const NewExpenses = (props) => {
+    const [isEditing, setIsEditing] = useState(false);
     const savedExpenseDataHandler = (enteredExpenseData) => {
         const expenseData = {
             ...enteredExpenseData,
             id: Math.random().toString(),
         };
         props.onAddExpense(expenseData);
+        isEditing(false);
     };
+     const startEditingHandler = () => {
+         setIsEditing(true);
+     };
+
+     const stopEditingHandler = ()=>{
+         setIsEditing(false);
+     }
     return (<div className = 'new-expense'>
-    <ExpenseForm onSaveExpenseData = { savedExpenseDataHandler} />
+    { !isEditing && <button onClick={startEditingHandler}> Add New Expense</button>}
+    { isEditing && <ExpenseForm onSaveExpenseData = { savedExpenseDataHandler} onCancel={stopEditingHandler} />}
+    
     </div>
     );
 };
